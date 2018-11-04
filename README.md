@@ -4,4 +4,4 @@
 
 Authors: Zoey Fryhover, Sarah Myers and Melissa Wilson
 
-Thank you to [minimaxir](https://github.com/minimaxir/textgenrnn) for your text generating RNN!
+Thank you to [minimaxir](https://github.com/minimaxir/textgenrnn) for your text generating char-RNN!
