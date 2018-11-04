@@ -1,4 +1,4 @@
-![](https://github.com/myer0432/henry-the-bee/blob/master/Media/banner.png)
+![](https://github.com/myer0432/henry-the-bee/blob/master/Media/banner-img.png)
                                                                                                                           
 **Henry the bee** is a machine learning Twitter bot. Bzz bzz!
 
