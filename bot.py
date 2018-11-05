@@ -55,23 +55,26 @@ class rnn():
     # Generate text
     def generate(self, low, high):
         hashtag = ""
-        text = self.textgen.generate(1, temperature=(random.uniform(0, 1)*(high-low)+low), return_as_list=True)[0]
+        text = self.textgen.generate(1, temperature=(random.uniform(0, 1)*(high-low)+low), return_as_list=True)[0].lower()
         arr = text.split(" ")
         if len(arr) <= 3:
             hashtag += "#"
             for a in arr:
-                hashtag += re.sub('[^0-9a-zA-Z]+', '', a).capitalize()
+                hashtag += re.sub('[^0-9a-zA-Z]+', '', a)
             text = ""
         while len(text + hashtag) < 280:
             hashtag_more = ""
             if random.randint(0, 1) == 0:
                 return text + hashtag
-            more = self.textgen.generate(1, temperature=(random.uniform(0, 1)*(high-low)+low), return_as_list=True)[0]
+            more = self.textgen.generate(1, temperature=(random.uniform(0, 1)*(high-low)+low), return_as_list=True)[0].lower()
             arr = more.split(" ")
             if len(arr) <= 3:
                 hashtag_more = "#"
                 for a in arr:
-                    hashtag_more += re.sub('[^0-9a-zA-Z]+', '', a).capitalize()
+                    if len(hashtag_more) > 1:
+                        hashtag_more += re.sub('[^0-9a-zA-Z]+', '', a).capitalize()
+                    else:
+                        hashtag_more += re.sub('[^0-9a-zA-Z]+', '', a)
                 more = ""
             if len(text + more + hashtag + hashtag_more) < 280:
                 if len(more) > 0:
