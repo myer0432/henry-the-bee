@@ -13,7 +13,7 @@ import re
 #                                                                        #
 #                                                                        #
 #  Authors: Zoey Fryhover, Sarah Myers and Melissa Wilson                #
-#  Version: 2.0                                                          #
+#  Version: 2.1                                                          #
 #                                                                        #
 #  Thank you to minimaxir for your text-generating RNN.                  #
 #  https://github.com/minimaxir/textgenrnn                               #
