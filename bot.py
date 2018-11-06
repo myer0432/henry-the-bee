@@ -64,7 +64,7 @@ class rnn():
             text = ""
         while len(text + hashtag) < 280:
             hashtag_more = ""
-            if random.randint(0, 1) == 0:
+            if random.randint(0, 3) != 0:
                 return text + hashtag
             more = self.textgen.generate(1, temperature=(random.uniform(0, 1)*(high-low)+low), return_as_list=True)[0].lower()
             arr = more.split(" ")
