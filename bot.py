@@ -28,9 +28,11 @@ HIGH = 0.65
 # MAIN #
 ########
 def main():
-    henry = rnn("Weights/henry.hdf5", LOW, HIGH)
-    henry.get_secrets()
-    henry.tweet()
+    henry = textgenrnn()
+    henry.train_from_file("Corpus/henry.txt")
+    # henry = rnn("henry.hdf5", LOW, HIGH)
+    # henry.get_secrets()
+    # henry.tweet()
 
 #######
 # RNN #
@@ -68,7 +70,7 @@ class rnn():
                 return text + hashtag
             more = self.textgen.generate(1, temperature=(random.uniform(0, 1)*(high-low)+low), return_as_list=True)[0].lower()
             arr = more.split(" ")
-            if len(arr) <= 3:
+            if len(arr) <= 3 and random.randint(0, 1) != 0:
                 hashtag_more = "#"
                 for a in arr:
                     if len(hashtag_more) > 1:
