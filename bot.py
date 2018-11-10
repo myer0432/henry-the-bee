@@ -29,10 +29,11 @@ HIGH = 0.65
 ########
 def main():
     henry = textgenrnn()
-    henry.train_from_file("Corpus/henry.txt")
-    # henry = rnn("henry.hdf5", LOW, HIGH)
+    henry.train_from_file("Corpus/henry.txt", num_epochs=20)
+    # henry = rnn("smart_henry.hdf5", LOW, HIGH)
     # henry.get_secrets()
-    # henry.tweet()
+    # for i in range(0, 5):
+    #     henry.tweet()
 
 #######
 # RNN #
