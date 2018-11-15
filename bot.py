@@ -28,12 +28,12 @@ HIGH = 0.65
 # MAIN #
 ########
 def main():
-    henry = textgenrnn()
-    henry.train_from_file("Corpus/henry.txt", num_epochs=20)
-    # henry = rnn("smart_henry.hdf5", LOW, HIGH)
-    # henry.get_secrets()
-    # for i in range(0, 5):
-    #     henry.tweet()
+    # henry = textgenrnn()
+    # henry.train_from_file("Corpus/henry.txt", num_epochs=20)
+    henry = rnn("henry.hdf5", LOW, HIGH)
+    henry.get_secrets()
+    for i in range(0, 2):
+        henry.tweet()
 
 #######
 # RNN #
@@ -63,12 +63,15 @@ class rnn():
         if len(arr) <= 3:
             hashtag += "#"
             for a in arr:
-                hashtag += re.sub('[^0-9a-zA-Z]+', '', a)
+                    if len(hashtag) > 1:
+                        hashtag += re.sub('[^0-9a-zA-Z]+', '', a).capitalize()
+                    else:
+                        hashtag += re.sub('[^0-9a-zA-Z]+', '', a)
             text = ""
         while len(text + hashtag) < 280:
             hashtag_more = ""
             if random.randint(0, 3) != 0:
-                return text + hashtag
+                return text + " " + hashtag
             more = self.textgen.generate(1, temperature=(random.uniform(0, 1)*(high-low)+low), return_as_list=True)[0].lower()
             arr = more.split(" ")
             if len(arr) <= 3 and random.randint(0, 1) != 0:
